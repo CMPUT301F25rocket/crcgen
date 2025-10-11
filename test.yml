@@ -1,0 +1,20 @@
+Order:
+  role:
+  - Store order items
+  - Calculate subtotal
+  - Track order status
+  collab:
+  - OrderItem
+  - Customer
+  - OrderProcessor
+OrderProcessor:
+  role:
+  - Validate order details
+  - Calculate total price
+  - Apply discounts
+  - Process payment
+  collab:
+  - Order
+  - PaymentGateway
+  - InventoryManager
+  - Customer
