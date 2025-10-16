@@ -6,6 +6,7 @@ use std::fs::File;
 use std::io::{self, stdout};
 use std::io::{BufWriter, Write};
 use std::path::{Path, PathBuf};
+use std::process::exit;
 
 use serde::Deserialize;
 
@@ -74,6 +75,16 @@ impl CardFormatter for MarkdownFormatter {
     }
 }
 
+pub struct SvgFormatter;
+
+impl CardFormatter for SvgFormatter {
+    fn write_to(writer: &mut BufWriter<dyn Write>, cards: &CrcCards) -> io::Result<usize> {
+        let mut bytes_written = 0;
+
+        Ok(bytes_written)
+    }
+}
+
 fn main() -> anyhow::Result<()> {
     let args = Args::parse();
 
@@ -92,7 +103,7 @@ fn main() -> anyhow::Result<()> {
                     path.to_str().unwrap_or("<cannot display>"),
                     e
                 );
-                continue;
+                exit(1);
             }
         };
         // If failing to write theres not much we can do.
