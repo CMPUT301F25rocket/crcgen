@@ -11,6 +11,10 @@ use std::process::exit;
 use serde::Deserialize;
 
 #[derive(Parser)]
+#[command(
+    version,
+    about = "Generate html flavoured markdown CRC cards from YAML."
+)]
 pub struct Args {
     #[arg(required=true, num_args=1..)]
     infiles: Vec<PathBuf>,
